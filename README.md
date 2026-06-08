@@ -15,7 +15,7 @@ I implemented automation for both UI and API layers, focusing on Smoke and Regre
 * **API Testing:** Validation of status codes, JSON payloads, and response times for authentication and product endpoints.
 
 ## How to Run the Project
-1. Clone the repository: `git clone https://github.com/YOUR_USER/repo-name.git`
+1. Clone the repository: `git clone https://github.com/EzequielAM/e2e-playwright-commerce-testing.git`
 2. Install dependencies: `npm install`
 3. Run all tests: `npx playwright test`
 4. View HTML Report: `npx playwright show-report`
