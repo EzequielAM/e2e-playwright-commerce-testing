@@ -1,0 +1,23 @@
+{
+  "name": "e2e-playwright-commerce-testing",
+  "version": "1.0.0",
+  "description": "This repository contains a robust automation testing framework built from scratch using **Playwright** and **JavaScript**, designed to validate critical user flows and API endpoints.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EzequielAM/e2e-playwright-commerce-testing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/EzequielAM/e2e-playwright-commerce-testing/issues"
+  },
+  "homepage": "https://github.com/EzequielAM/e2e-playwright-commerce-testing#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.2"
+  }
+}
