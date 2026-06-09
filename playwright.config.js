@@ -1,3 +1,6 @@
+// Cargar variables de entorno desde el archivo .env
+require('dotenv').config();
+
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
 
@@ -22,7 +25,9 @@ export default defineConfig({
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    baseURL: process.env.BASE_URL_UI || 'https://www.saucedemo.com',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',

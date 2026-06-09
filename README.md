@@ -1,53 +1,78 @@
 ![Playwright Tests Cloud Execution](https://github.com/EzequielAM/e2e-playwright-commerce-testing/actions/workflows/playwright.yml/badge.svg)
-# E2E Testing & API Automation Framework
 
-This repository contains a robust automation testing framework built from scratch using **Playwright** and **JavaScript**, designed to validate critical user flows (UI) and service layers (API) independently.
+# E2E Testing & API Automation Framework 🚀
 
-## Tech Stack & Tools
-* **Language:** JavaScript (Node.js ecosystem)
-* **Testing Framework:** Playwright
-* **Pattern:** Page Object Model (POM)
-* **Target UI App:** SauceDemo (E-commerce)
-* **Target API:** HTTPBin (REST API)
-* **Reporting:** Playwright HTML Reporter
+This repository contains a robust, enterprise-grade automation testing framework built from scratch using **Playwright** and **JavaScript**. It validates critical user journeys (UI) and service layers (API) completely decoupled, featuring a modern CI/CD architecture.
 
-## Project Structure
-The project follows architectural best practices by separating page element definitions from the actual test logic:
+---
+
+## 🛠️ Tech Stack & Tools
+* **Core Engine:** Playwright (Multi-browser support)
+* **Design Pattern:** Page Object Model (POM) + Data-Driven Testing (DDT)
+* **CI/CD Pipeline:** GitHub Actions (Ubuntu environments)
+* **Integrations:** Real-time test status alerts via **Slack Webhooks**
+* **Reporting:** Playwright HTML Reporter + **Allure Report Dashboards**
+* **Configuration:** Environment isolation using `dotenv` (`.env`)
+
+---
+
+## 📂 Project Structure
 ```text
-├── pages/                 # Page Object Model (POM) files
-│   ├── LoginPage.js       # Login locators and actions
-│   ├── ProductsPage.js    # Product catalog and cart actions
-│   └── CartPage.js        # Checkout and validation actions
-├── tests/                 # Test suites
-│   ├── auth.spec.js       # Authentication tests (Happy/Sad paths)
-│   ├── shopping.spec.js   # E2E Shopping Cart purchase flow
-│   └── api.spec.js        # Independent REST API CRUD tests
-├── playwright.config.js   # Advanced multi-project configuration
+├── .github/workflows/     # CI/CD Pipeline configuration (GitHub Actions)
+├── data/
+│   └── usuarios.json      # Data-Driven test inputs for authentication
+├── pages/                 # Page Object Model (POM) architecture
+│   ├── LoginPage.js
+│   ├── ProductsPage.js
+│   └── CartPage.js
+├── tests/                 # Scalable test execution suites
+│   ├── auth.spec.js       # Data-Driven Authentication tests (7 edge cases)
+│   ├── shopping.spec.js   # E2E Shopping Cart purchase journey
+│   └── api.spec.js        # Isolated REST API CRUD lifecycle validation
+├── .env.example           # Reference file for environment variables
+├── playwright.config.js   # Multi-project & advanced reporter configuration
 └── package.json
 ```
 
 ## Test Strategy & Coverage
-I implemented automation for both UI and API layers, optimizing execution times and resources:
+### UI & Data-Driven Testing (DDT)
+Encapsulated locators under POM to ensure maintenance stability. The authentication suite scales dynamically via a standalone JSON file, executing 7 distinct user behavior profiles (Standard, Locked Out, Problem User, Performance Glitch, and empty fields boundary validations) in parallel across multiple viewports.
 
-UI Testing: Validates multi-browser compatibility (Chromium, Firefox, WebKit) for end-to-end user journeys using encapsulated and maintainable selectors.
+### API Isolation
+Validates the full REST CRUD lifecycle (GET, POST, PUT, DELETE) with deep schema assertion, header inspection, and regex-based content checks, executing without browser overhead.
 
-API Testing: Validates full CRUD lifecycle (GET, POST, PUT, DELETE) with advanced schema assertion, timestamp checking, and regex-based response validation, running completely isolated from browser contexts.
+### DevOps & Observability
+Every code push triggers an ephemeral Linux runner on GitHub Actions. Pipeline lifecycle events (Success/Failure) automatically broadcast rich notifications to a corporate Slack channel. Test metrics are compiled into interactive Allure Reports displaying epic, feature, and severity metadata.
 
 ## How to Run the Project
-1 -Clone the repository:
-git clone https://github.com/EzequielAM/e2e-playwright-commerce-testing.git
+### 1 -Clone & Install:
 
-2-Install dependencies:
+git clone https://github.com/EzequielAM/e2e-playwright-commerce-testing.git
 npm install
 
-3-Run API Tests only (Isolated & fast):
-npx playwright test --project=api
+### 2-Environment Setup:
+Create a .env file in the root directory based on the project configuration:
+ENV=QA
+BASE_URL_UI=[https://www.saucedemo.com](https://www.saucedemo.com)
+BASE_URL_API=[https://httpbin.org](https://httpbin.org)
 
-4-Run UI Tests on Google Chrome (Chromium):
-npx playwright test --project=chromium
 
-5-Run the entire suite across all projects:
+### 3-Execution Commands:
+
+#### Run entire suite (All browsers + API):
 npx playwright test
 
-6-Open the interactive HTML Report:
+#### Run UI Tests on Google Chrome (Chromium) only:
+npx playwright test --project=chromium
+
+#### Run API Tests only (Isolated & fast):
+npx playwright test --project=api
+
+### 4-Generating Advanced Reports:
+#### View native Playwright report:
 npx playwright show-report
+
+#### Serve Allure Dashboard (Rich metrics & analytics):
+npx allure serve allure-results
+
+Engineered with modern QA automation standards by Ezequiel Muñoz
