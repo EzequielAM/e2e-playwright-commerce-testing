@@ -1,0 +1,70 @@
+[
+  {
+    "tipo": "Usuario Estándar",
+    "username": "standard_user",
+    "password": "secret_sauce",
+    "esperaError": false
+  },
+  {
+    "tipo": "Usuario Bloqueado",
+    "username": "locked_out_user",
+    "password": "secret_sauce",
+    "esperaError": true,
+    "mensajeError": "Epic sadface: Sorry, this user has been locked out."
+  },
+  {
+    "tipo": "Credenciales Inválidas",
+    "username": "usuario_falso",
+    "password": "password_incorrecto",
+    "esperaError": true,
+    "mensajeError": "Epic sadface: Username and password do not match any user in this service"
+  },
+
+  {
+    "tipo": "Usuario Estándar",
+    "username": "standard_user",
+    "password": "secret_sauce",
+    "esperaError": false
+  },
+  {
+    "tipo": "Usuario Bloqueado",
+    "username": "locked_out_user",
+    "password": "secret_sauce",
+    "esperaError": true,
+    "mensajeError": "Epic sadface: Sorry, this user has been locked out."
+  },
+  {
+    "tipo": "Credenciales Inválidas",
+    "username": "usuario_falso",
+    "password": "password_incorrecto",
+    "esperaError": true,
+    "mensajeError": "Epic sadface: Username and password do not match any user in this service"
+  },
+  {
+    "tipo": "Usuario con Problema Visual (Problem User)",
+    "username": "problem_user",
+    "password": "secret_sauce",
+    "esperaError": false
+  },
+  {
+    "tipo": "Usuario con Delay de Rendimiento (Performance Glitch)",
+    "username": "performance_glitch_user",
+    "password": "secret_sauce",
+    "esperaError": false
+  },
+  {
+    "tipo": "Campos Vacíos",
+    "username": "",
+    "password": "",
+    "esperaError": true,
+    "mensajeError": "Epic sadface: Username is required"
+  },
+  {
+    "tipo": "Contraseña Vacía",
+    "username": "standard_user",
+    "password": "",
+    "esperaError": true,
+    "mensajeError": "Epic sadface: Password is required"
+  }
+
+]

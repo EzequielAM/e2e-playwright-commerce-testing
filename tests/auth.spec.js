@@ -1,27 +1,30 @@
 const { test, expect } = require('@playwright/test');
 const { LoginPage } = require('../pages/LoginPage');
+const usuarios = require('../data/usuarios.json');
+const { allure } = require('allure-playwright');
 
-test.describe('SauceDemo - Authentication Tests (POM)', () => {
+test.describe('SauceDemo - Data Driven Authentication Tests (POM)', () => {
 
-  test('Should login successfully with valid credentials', async ({ page }) => {
-    const loginPage = new LoginPage(page);
+  usuarios.forEach((usuario, index) => {
 
+    test(`Login test - ${usuario.tipo} [Case #${index + 1}]`, async ({ page }) => {
 
-    await loginPage.navigate();
-    await loginPage.login('standard_user', 'secret_sauce');
+      allure.epic('Autenticación');
+      allure.feature('Login Dinámico');
+      allure.story(`Validar comportamiento de: ${usuario.tipo}`);
+      allure.severity(usuario.esperaError ? 'normal' : 'critical');
 
+      const loginPage = new LoginPage(page);
+      await loginPage.navigate();
+      await loginPage.login(usuario.username, usuario.password);
 
-    await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
-  });
+      if (usuario.esperaError) {
+        await loginPage.assertErrorMessage(usuario.mensajeError);
+      } else {
+        await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
+      }
+    });
 
-  test('Should display error message with invalid credentials', async ({ page }) => {
-    const loginPage = new LoginPage(page);
-
-    await loginPage.navigate();
-    await loginPage.login('invalid_user', 'wrong_password');
-
-    // Validación usando el método asertivo de nuestro Page Object
-    await loginPage.assertErrorMessage('Username and password do not match any user in this service');
   });
 
 });
