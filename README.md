@@ -2,7 +2,7 @@
 
 This repository contains a robust automation testing framework built from scratch using **Playwright** and **JavaScript**, designed to validate critical user flows (UI) and service layers (API) independently.
 
-## 🛠️ Tech Stack & Tools
+## Tech Stack & Tools
 * **Language:** JavaScript (Node.js ecosystem)
 * **Testing Framework:** Playwright
 * **Pattern:** Page Object Model (POM)
@@ -23,6 +23,7 @@ The project follows architectural best practices by separating page element defi
 │   └── api.spec.js        # Independent REST API CRUD tests
 ├── playwright.config.js   # Advanced multi-project configuration
 └── package.json
+```
 
 ## Test Strategy & Coverage
 I implemented automation for both UI and API layers, optimizing execution times and resources:
@@ -33,7 +34,7 @@ API Testing: Validates full CRUD lifecycle (GET, POST, PUT, DELETE) with advance
 
 ## How to Run the Project
 1 -Clone the repository:
-git clone [https://github.com/EzequielAM/e2e-playwright-commerce-testing.git](https://github.com/EzequielAM/e2e-playwright-commerce-testing.git)
+git clone https://github.com/EzequielAM/e2e-playwright-commerce-testing.git
 
 2-Install dependencies:
 npm install
