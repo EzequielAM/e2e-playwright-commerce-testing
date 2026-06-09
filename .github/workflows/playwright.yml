@@ -28,11 +28,9 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
 
-    # Corremos el proyecto de API en la nube (HTTPBin no bloquea data centers)
     - name: Run Playwright tests
       run: npx playwright test --project=api
 
-    # 🚀 FIX CRÍTICO: Nombre corregido a la acción oficial en singular (upload-artifact)
     - name: Upload Test Report Artifact
       uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
@@ -40,3 +38,15 @@ jobs:
         name: playwright-html-report
         path: playwright-report/
         retention-days: 30
+
+
+    - name: Send status notification to Slack
+      uses: ravsamhq/notify-slack-action@v2
+      if: ${{ always() }} # Queremos que nos avise tanto si da verde como si falla
+      with:
+        status: ${{ job.status }}
+        notification_title: 'Resultado de la suite de pruebas en la nube 🤖'
+        message_format: '{emoji} *Los tests de API terminaron con estado:* {status_message}'
+        footer: 'Pipeline ejecutado por GitHub Actions'
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
