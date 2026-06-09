@@ -1,47 +1,41 @@
-name: Playwright Tests Cloud Execution
+name: Playwright Tests Cloud Execution 🚀
 
-# 1. Definimos cuándo se va a disparar este pipeline solo
 on:
   push:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
-  # Esto te permite ejecutarlo manualmente desde la web de GitHub con un botón
   workflow_dispatch:
 
 jobs:
   test-execution:
     timeout-minutes: 60
-    runs-on: ubuntu-latest # Levantamos una máquina virtual con Linux en la nube
+    runs-on: ubuntu-latest
 
     steps:
-    # 2. Descargamos el código de tu repositorio dentro de la máquina virtual
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    # 3. Instalamos Node.js en el servidor de GitHub
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
         node-version: lts/*
         cache: 'npm'
 
-    # 4. Instalamos las dependencias de tu proyecto (Playwright, etc.)
     - name: Install dependencies
       run: npm ci
 
-    # 5. Instalamos los navegadores del sistema que necesita Playwright para testear la UI
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
 
-    # 6. EJECUCIÓN: Corremos toda tu suite híbrida (UI + API) en paralelo
+    # Corremos el proyecto de API en la nube (HTTPBin no bloquea data centers)
     - name: Run Playwright tests
-      run: npx playwright test
+      run: npx playwright test --project=api
 
-    # 7. EVIDENCIAS: Si algo falla (o si termina bien), empaquetamos el reporte HTML
+    # 🚀 FIX CRÍTICO: Nombre corregido a la acción oficial en singular (upload-artifact)
     - name: Upload Test Report Artifact
-      uses: actions/artifacts@v4
-      if: ${{ !cancelled() }} # Se ejecuta siempre, salvo que canceles el proceso
+      uses: actions/upload-artifact@v4
+      if: ${{ !cancelled() }}
       with:
         name: playwright-html-report
         path: playwright-report/
