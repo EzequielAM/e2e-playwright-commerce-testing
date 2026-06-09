@@ -1,0 +1,1 @@
+A snapshot doesn't exist at C:\Users\eze_k\Desktop\programacion\proyecto\e2e-playwright-commerce-testing\tests\visual.spec.js-snapshots\productos-vitrina-firefox-win32.png, writing actual.
