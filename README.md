@@ -1,4 +1,5 @@
-# E2E Testing & API Automation Framework 
+![Playwright Tests Cloud Execution](https://github.com/EzequielAM/e2e-playwright-commerce-testing/actions/workflows/playwright.yml/badge.svg)
+# E2E Testing & API Automation Framework
 
 This repository contains a robust automation testing framework built from scratch using **Playwright** and **JavaScript**, designed to validate critical user flows (UI) and service layers (API) independently.
 
