@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const { LoginPage } = require('../pages/LoginPage');
 
-test.describe('SauceDemo - Visual Regression Testing 🎨', () => {
+test.describe('SauceDemo - Visual Regression Testing ', () => {
 
   test('Validar consistencia visual de la vitrina de productos', async ({ page }) => {
     const loginPage = new LoginPage(page);
