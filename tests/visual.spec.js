@@ -1,14 +1,13 @@
 const { test, expect } = require('@playwright/test');
-const { LoginPage } = require('../pages/LoginPage');
 
-test.describe('SauceDemo - Visual Regression Testing ', () => {
+test.describe('SauceDemo - Visual Regression Testing', () => {
 
   test('Validar consistencia visual de la vitrina de productos', async ({ page }) => {
-    const loginPage = new LoginPage(page);
-    await loginPage.navigate();
-    await loginPage.login('standard_user', 'secret_sauce');
+    // Entramos directamente al inventario con la sesión inyectada
+    await page.goto('/inventory.html');
     await page.waitForURL('https://www.saucedemo.com/inventory.html');
 
+    // Realiza la comparación de píxeles contra la captura de referencia master
     await expect(page).toHaveScreenshot('productos-vitrina.png', {
       fullPage: true,
       maxDiffPixels: 100,

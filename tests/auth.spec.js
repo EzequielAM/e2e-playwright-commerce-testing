@@ -8,7 +8,6 @@ test.describe('SauceDemo - Data Driven Authentication Tests (POM)', () => {
   usuarios.forEach((usuario, index) => {
 
     test(`Login test - ${usuario.tipo} [Case #${index + 1}]`, async ({ page }) => {
-
       allure.epic('Autenticación');
       allure.feature('Login Dinámico');
       allure.story(`Validar comportamiento de: ${usuario.tipo}`);
