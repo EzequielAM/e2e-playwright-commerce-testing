@@ -1,6 +1,6 @@
 ![Playwright Tests Cloud Execution](https://github.com/EzequielAM/e2e-playwright-commerce-testing/actions/workflows/playwright.yml/badge.svg)
 
-# E2E Testing & API Automation Framework 🚀
+# E2E Testing & API Automation Framework
 
 This repository contains a robust, enterprise-grade automation testing framework built from scratch using **Playwright** and **JavaScript**. It validates critical user journeys (UI) and service layers (API) completely decoupled, featuring a modern CI/CD architecture.
 
@@ -16,7 +16,7 @@ This repository contains a robust, enterprise-grade automation testing framework
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 ```text
 ├── .github/workflows/     # CI/CD Pipeline configuration (GitHub Actions)
 ├── data/
