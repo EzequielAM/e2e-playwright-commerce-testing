@@ -6,7 +6,7 @@ This repository contains a robust, enterprise-grade automation testing framework
 
 ---
 
-## 🛠️ Tech Stack & Tools
+## Tech Stack & Tools
 * **Core Engine:** Playwright (Multi-browser support)
 * **Design Pattern:** Page Object Model (POM) + Data-Driven Testing (DDT)
 * **CI/CD Pipeline:** GitHub Actions (Ubuntu environments)
